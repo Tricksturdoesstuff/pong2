@@ -37,10 +37,16 @@ function love.draw()
 
     love.graphics.printf('Hello Pong!', 0, 20, VIRTUAL_WIDTH, 'center')
 
+
+    -- paddle one
     love.graphics.rectangle('fill', 10, 30, 5, 20)
 
+
+    -- paddle two
     love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 50, 5, 20)
 
+
+    -- ball
     love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
 
 
