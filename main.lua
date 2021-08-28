@@ -15,6 +15,8 @@ function love.load()
     
     scoreFont = love.graphics.newFont('font.ttf', 32)
 
+    love.graphics.setFont(smallFont)
+
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         resizable = false,
@@ -48,7 +50,7 @@ end
 
 
 function love.keypressed(key)
-    if key== 'escape' then
+    if key == 'escape' then
         love.event.quit()
     end
 end
@@ -67,11 +69,11 @@ function love.draw()
     love.graphics.print(tostring(player2Score), VIRTUAL_WIDTH / 2 + 30, VIRTUAL_HEIGHT / 3)
 
     -- paddle one
-    love.graphics.rectangle('fill', 10, 30, 5, 20)
+    love.graphics.rectangle('fill', 10, player1Y, 5, 20)
 
 
     -- paddle two
-    love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 50, 5, 20)
+    love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, player2Y, 5, 20)
 
 
     -- ball
