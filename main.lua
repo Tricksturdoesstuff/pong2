@@ -47,6 +47,7 @@ VIRTUAL_HEIGHT = 243
 PADDLE_SPEED = 200
 
 TOTALSCORE = 3
+MULTIPLIER = 1.1
 
 --[[
     Runs when the game first starts up, only once; used to initialize the game.
@@ -125,7 +126,7 @@ function love.update(dt)
         -- detect ball collision with paddles, reversing dx if true and
         -- slightly increasing it, then altering the dy based on the position of collision
         if ball:collides(player1) then
-            ball.dx = -ball.dx * 1.25
+            ball.dx = -ball.dx * MULTIPLIER
             ball.x = player1.x + 5
 
             -- keep velocity going in the same direction, but randomize it
@@ -138,7 +139,7 @@ function love.update(dt)
             sounds['paddle_hit']:play()
         end
         if ball:collides(player2) then
-            ball.dx = -ball.dx * 1.25
+            ball.dx = -ball.dx * MULTIPLIER
             ball.x = player2.x - 4
 
             -- keep velocity going in the same direction, but randomize it
@@ -180,7 +181,6 @@ function love.update(dt)
             if player2Score == TOTALSCORE then
                 winningPlayer = 2
                 
-            
                 sounds['roll']:play()
                 gameState = 'done'
             else
@@ -224,8 +224,10 @@ function love.update(dt)
         player2.dy = 0
     end ]]
 
-    if ball.y <= VIRTUAL_HEIGHT - 20 then
+    if ball.y <= VIRTUAL_HEIGHT - 10 then
         player2.y = ball.y - 10
+    else
+        player2.y = VIRTUAL_HEIGHT - 20
     end
 
     -- update our ball based on its DX and DY only if we're in play state;
