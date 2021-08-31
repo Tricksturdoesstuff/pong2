@@ -105,7 +105,7 @@ function love.update(dt)
             end
         end
         if ball:collides(player2) then
-            ball.dx = -ball.dx * 1.03
+            ball.dx = -ball.dx * 1.5
             ball.x = player2.x - 4
 
             -- keep velocity going in the same direction, but randomize it
